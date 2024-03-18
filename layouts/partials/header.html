@@ -1,4 +1,4 @@
-<header class="mx-auto w-screen max-w-screen-2xl px-6 sm:px-7 xl:px-8 2xl:px-10 py-6">
+<header class="mx-auto w-screen max-w-screen-2xl px-6 sm:px-7 xl:px-8 2xl:px-10 py-6 text-2xl">
     {{/* CSS functionality for menu toggle */}}
     <style type="text/css">
         input#nav-toggle:checked~label#show-button {
@@ -35,13 +35,13 @@
             </svg>
         </label>
 
-        <ul id="nav-menu" class="sm:flex w-full sm:w-auto hidden mt-2 sm:mt-0 sm:space-x-2">
-            {{ with .Site.GetPage "/about" }}
+        <ul id="nav-menu" class="sm:flex gap-8 w-full sm:w-auto hidden mt-2 sm:mt-0 sm:space-x-2">
+            {{ range .Site.Sections }}
             <li>
                 <a href="{{ .Permalink }}" class="hover:text-sky-500 dark:hover:text-sky-500">{{ .Title }}</a>
             </li>
             {{ end }}
-            {{ range .Site.Sections }}
+            {{ with .Site.GetPage "/about" }}
             <li>
                 <a href="{{ .Permalink }}" class="hover:text-sky-500 dark:hover:text-sky-500">{{ .Title }}</a>
             </li>
