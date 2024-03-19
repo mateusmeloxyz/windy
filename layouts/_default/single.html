@@ -3,6 +3,8 @@
     class="justify-self-center mx-auto px-6 mb-16 sm:px-4 md:px-0 prose dark:prose-invert prose-slate lg:prose-lg hover:prose-a:text-sky-500">
     <h1>{{ .Title }}</h1>
     <p>{{ .Date | time.Format "Jan 02, 2006"}}</p>
-    {{ .Content }}
+    <div class="text-justify">
+        {{ .Content }}
+    </div>
 </article>
 {{ end }}
