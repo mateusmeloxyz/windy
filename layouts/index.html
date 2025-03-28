@@ -24,11 +24,12 @@
         <article
             class="justify-between items-end gap-8 text-left mx-auto mb-16 px-6 sm:px-4 md:px-0 prose dark:prose-invert prose-slate lg:prose-lg hover:prose-a:text-sky-500"
         >
-            <p class="justify-center mb-0">
-                {{ .Date | time.Format "Jan 02, 2006"}}
-            </p>
             <span class="text-2xl">
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <br />
+                <span class="justify-center mb-0 text-sm">
+                    {{ .Date | time.Format "Jan 02, 2006"}}
+                </span>
                 <p class="text-sm">{{ .Summary }}</p>
             </span>
         </article>
