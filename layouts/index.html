@@ -1,16 +1,36 @@
 {{ define "main" }}
-<article class="justify-self-center mx-auto text-center prose dark:prose-invert prose-slate lg:prose-lg">
-    <h1 class="font-serif font-extralight text-5xl welcome-headline">{{ .Title }}</h1>
-    {{ .Content }}
-    <div class="px-8">
-        <h2 class="font-serif font-extralight welcome-headline">Recent Posts</h2>
+<article
+    class="justify-self-center mx-auto prose dark:prose-invert prose-slate lg:prose-lg"
+>
+    <h1
+        class="font-serif font-extralight text-5xl welcome-headline text-center"
+    >
+        {{ .Title }}
+    </h1>
+    <div class="grid grid-cols-3 gap-8">
+        <div class="col-span-2">{{ .Content }}</div>
+        <div class="grid items-center self-center justify-items-center">
+            <img
+                class="w-28 object-contain rounded-full"
+                src="{{ `/img/profile.jpeg` | relURL }}"
+            />
+        </div>
+    </div>
+    <div class="">
+        <h2 class="font-serif font-extralight welcome-headline">
+            Recent Posts
+        </h2>
         {{ range (where site.RegularPages "Section" "posts" )}}
         <article
-            class="flex justify-between items-end gap-8 text-left mx-auto mb-16 px-6 sm:px-4 md:px-0 prose dark:prose-invert prose-slate lg:prose-lg hover:prose-a:text-sky-500">
+            class="justify-between items-end gap-8 text-left mx-auto mb-16 px-6 sm:px-4 md:px-0 prose dark:prose-invert prose-slate lg:prose-lg hover:prose-a:text-sky-500"
+        >
+            <p class="justify-center mb-0">
+                {{ .Date | time.Format "Jan 02, 2006"}}
+            </p>
             <span class="text-2xl">
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
+                <p class="text-sm">{{ .Summary }}</p>
             </span>
-            <span class="justify-center">{{ .Date | time.Format "Jan 02, 2006"}}</span>
         </article>
         {{ end }}
     </div>
